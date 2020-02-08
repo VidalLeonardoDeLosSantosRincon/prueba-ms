@@ -1,7 +1,7 @@
 
     <header>
             <ul>
-                <a href="http://localhost/mediasoft/"><li>Home</li></a>
+                <!--<a href="http://localhost/mediasoft/"><li>Home</li></a>-->
                 <a href="http://localhost/mediasoft/index.php/product"><li>Products</li></a>
                 <a href="http://localhost/mediasoft/index.php/product/saved"><li>MyProducts</li></a>
             </ul>
