@@ -1,6 +1,6 @@
  
     <footer>
-            <h6>Vidal De Los Santos &trade; 2020</h6>
+            <a target="_blank" href="https://github.com/VidalLeonardoDeLosSantosRincon"><h6>Vidal De Los Santos &trade; 2020</h6></a>
     </footer>
     
     <style id="footer_styles">
@@ -23,5 +23,9 @@
             color:gray;
             font-size:12px;
             font-weight:300;
+        }
+
+        footer a{
+            text-decoration:none;
         }
     </style>
