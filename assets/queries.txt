@@ -1,0 +1,17 @@
+create table products(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    code_id int,
+    image text,
+    name varchar(60),
+    status varchar(30),
+    condicion varchar(30),
+    category varchar(30),
+    color varchar(30),
+    size varchar(30), 
+    occasion varchar(30),
+    gender varchar(30),
+    description text,
+	created_at datetime default now(),
+	updated_at datetime,
+	deleted_at datetime
+)
