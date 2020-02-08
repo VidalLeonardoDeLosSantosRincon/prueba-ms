@@ -10,7 +10,7 @@
         </div>
 
         <div id="all_products">
-
+                <h4 style="font-size:25px; color:gray;">No data</h4>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
                 let template=""; 
                 let boxPro = document.getElementById("all_products");
                 const products =[];
-                        
+                boxPro.innerHTML="...Loading";    
                 fetch("https://pos.ricobot.com/catalogs/")
                 .then(res=>res.json())
                 .then(res=>{
@@ -73,7 +73,10 @@
                         let addButtons = Array.from(document.getElementsByClassName("add_to_kart"));
                         addButtons.map((addButton)=>{
                             addButton.addEventListener("click",addToKart);
-                        })                   }
+                        })                   
+                    }else{
+                        boxPro.innertHTML='<h4 style="font-size:25px; color:gray;">No data</h4>'
+                    }
                 }).catch(er=>console.log(er));
             }
             getData();
@@ -84,6 +87,7 @@
                 let template=""; 
                 const products =[];
                 let boxPro = document.getElementById("all_products");
+                boxPro.innerHTML="...Loading";
                 let searchInput = document.getElementById("search-input").value.trim();
                 if(searchInput!==""){
                     fetch(`https://pos.ricobot.com/catalogs/?&search=${searchInput}`)
