@@ -4,18 +4,7 @@
         home
     </div>
 
-    <style>
-
-        *{
-            padding:0;
-            margin:0;
-        }
-
-        body{
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background:white;
-            height:100vh;
-        }
+    <style id="home_styles">
 
         #ctr-home{
             padding:25px;
