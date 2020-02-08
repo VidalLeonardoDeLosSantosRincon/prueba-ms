@@ -62,13 +62,10 @@
 
                           
                         })
-                        if(localStorage.getItem("products")===null){
-                            localStorage.setItem("products",JSON.stringify(products));
-                        }else{
-                            let data = JSON.parse(localStorage.getItem("products"));
-                            data.push(...products)
-                            localStorage.setItem("products",JSON.stringify(data));
-                        }
+                        
+                        //saving date on localStorage
+                        localStorage.setItem("products_ms",JSON.stringify(products));
+                     
                         //appending template to body
                         boxPro.innerHTML = template;
 
@@ -137,13 +134,8 @@
                                     </div>`;
                                 })
                                 //saving date on localStorage
-                                if(localStorage.getItem("products")===null){
-                                    localStorage.setItem("products",JSON.stringify(products));
-                                }else{
-                                    let data = JSON.parse(localStorage.getItem("products"));
-                                    data.push(...products)
-                                    localStorage.setItem("products",JSON.stringify(data));
-                                }
+                                localStorage.setItem("products_ms",JSON.stringify(products));
+                                
                                 //appending template to body
                                 boxPro.innerHTML = template;   
                                 
@@ -162,13 +154,11 @@
             }
             searchBtn.addEventListener("click",searchProduct);
 
-            if(localStorage.getItem("products")!==null){
-                
-            }
+            
             function addToKart(e){
 
-                if(localStorage.getItem("products")!==null){
-                    let products_storage = JSON.parse(localStorage.getItem("products"));
+                if(localStorage.getItem("products_ms")!==null){
+                    let products_storage = JSON.parse(localStorage.getItem("products_ms"));
                     let data_to_add ={};
 
                     
@@ -187,6 +177,7 @@
                                 response = JSON.parse(response.substring(0,response.indexOf("<")));
                                 if(response===true){
                                     alert("Product was saved");
+                                    localStorage.setItem(`savedProduct_${data_to_add.code_id}`,JSON.stringify(data_to_add));
                                 }else if(response===false){
                                     alert("Product wasn't saved");
                                 }

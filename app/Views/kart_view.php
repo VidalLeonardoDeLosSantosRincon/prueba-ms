@@ -29,7 +29,7 @@
                                 <h4 id="gender">Gender:${product.gender}</h4>
                                 <h4 id="code">code: ${product.code_id}</h4>
                                 <p id="description">Description:${product.description}</p>
-                                <button class="remove_from_kart" name="btn_${product.id}">remove</button>
+                                <button class="remove_from_kart" name="btn_${product.id}" id=btn_${product.code_id}>remove</button>
                             </div>`;
                     });
 
@@ -45,20 +45,14 @@
                     })
 
                 /**/////////////////////////setting image product//////////////////// */
-                if(localStorage.getItem("products")!==null){
-                        let products_storage = JSON.parse(localStorage.getItem("products"));
                         let images_products = Array.from(document.getElementsByClassName("image_product"));
-
                         images_products.map((image)=>{
                             
-                            products_storage.map((product)=>{
-                                if(parseInt(image.name)===product.code_id){
-                                    image.src = product.image;
-                                }
-                            });
-
+                            let img = JSON.parse(localStorage.getItem(`savedProduct_${image.name}`))
+                            image.src = img.image;
+                            //console.log(img);
                         })
-                }
+                
                 /**////////////////////////////////////////////////////////////// */
                 }).catch((er)=>console.log(er))
             }
@@ -80,6 +74,8 @@
                             
                             if(response===true){
                                 alert("Product was deleted");
+                                let code = e.target.id.substring(e.target.id.indexOf("_")+1,e.target.id.length);
+                                localStorage.removeItem(`savedProduct_${code}`);
                                 location.reload();
                             }else if(response===false){
                                 alert("Product wasn't deleted");
