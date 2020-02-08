@@ -66,28 +66,31 @@
 
 
             function removeFromKart(e){
-                let id = e.target.name.substring(e.target.name.trim().indexOf("_")+1,e.target.name.trim().length)
-                let xhr = new XMLHttpRequest();
-                        xhr.onreadystatechange = function() 
+                
+                if(window.confirm("You will delete this article?")){
+                    let id = e.target.name.substring(e.target.name.trim().indexOf("_")+1,e.target.name.trim().length)
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() 
+                    {
+                        if (xhr.readyState == 4 && xhr.status == 200) 
                         {
-                            if (xhr.readyState == 4 && xhr.status == 200) 
-                            {
-                                let response = xhr.responseText;
-                                response = JSON.parse(response.substring(0,response.indexOf("<")));
-                                console.log(response);
-                                
-                                if(response===true){
-                                    alert("Product was deleted");
-                                    location.reload();
-                                }else if(response===false){
-                                    alert("Product wasn't deleted");
-                                }
+                            let response = xhr.responseText;
+                            response = JSON.parse(response.substring(0,response.indexOf("<")));
+                            console.log(response);
+                            
+                            if(response===true){
+                                alert("Product was deleted");
+                                location.reload();
+                            }else if(response===false){
+                                alert("Product wasn't deleted");
                             }
-                        };
+                        }
+                    };
 
-                        xhr.open("POST", "http://localhost/mediasoft/index.php/product/delete?", true);
-                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                        xhr.send(`id=${id}`);
+                    xhr.open("POST", "http://localhost/mediasoft/index.php/product/delete?", true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(`id=${id}`);
+                }
             }
 
         })();
